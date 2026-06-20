@@ -1,0 +1,34 @@
+name: Daily GeM Feed Ingestion
+
+on:
+  schedule:
+    # Runs automatically everyday at 7:00 AM UTC (12:30 PM Indian Standard Time)
+    - cron: '0 7 * * *'
+  workflow_dispatch: # Allows you to trigger it manually by clicking a button!
+
+jobs:
+  build-and-scrape:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository Code
+      uses: actions/checkout@v4
+
+    - name: Setup Python Environment
+      uses: actions/workers/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Install Scraping Dependencies
+      run: |
+        pip install requests beautifulsoup4
+
+    - name: Run Scraper
+      run: python cloud_scraper.py
+
+    - name: Commit and Push Updated Data File
+      run: |
+        git config --global user.name "GeM Automated Bot"
+        git config --global user.email "bot@github.com"
+        git add gem_live_feeds.json
+        git commit -m "Automated Sync: Live GeM Feeds Updated" || exit 0
+        git push
