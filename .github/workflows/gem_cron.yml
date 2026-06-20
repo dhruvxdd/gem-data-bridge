@@ -2,9 +2,8 @@ name: Daily GeM Feed Ingestion
 
 on:
   schedule:
-    # Runs automatically everyday at 7:00 AM UTC (12:30 PM Indian Standard Time)
     - cron: '0 7 * * *'
-  workflow_dispatch: # Allows you to trigger it manually by clicking a button!
+  workflow_dispatch: 
 
 jobs:
   build-and-scrape:
@@ -12,6 +11,8 @@ jobs:
     steps:
     - name: Checkout Repository Code
       uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }} # Explicitly uses the write token you enabled
 
     - name: Setup Python Environment
       uses: actions/setup-python@v5
@@ -27,8 +28,8 @@ jobs:
 
     - name: Commit and Push Updated Data File
       run: |
-        git config --global user.name "GeM Automated Bot"
-        git config --global user.email "bot@github.com"
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git add gem_live_feeds.json
         git commit -m "Automated Sync: Live GeM Feeds Updated" || exit 0
-        git push
+        git push origin main
