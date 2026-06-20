@@ -1,35 +1,24 @@
 [
     {
         "b_bid_number": [
-            "GEM/2026/B/761015"
+            "GEM/2026/B/111222"
         ],
         "b_category_name": [
-            "Commercial Oblique MR Plywood Sheets, Industrial Packing Cases"
+            "Offset Printing and Stationery BOQ Items"
         ],
         "b_is_bunch_id": [
-            "Ministry of Defence"
+            "Meerut Procurement"
         ]
     },
     {
         "b_bid_number": [
-            "GEM/2026/B/992110"
+            "GEM/2026/B/333444"
         ],
         "b_category_name": [
-            "Offset Printing of Textbooks, Training Manuals, Ledger Registers"
+            "Commercial Oblique MR Plywood"
         ],
         "b_is_bunch_id": [
-            "Department of Publication"
-        ]
-    },
-    {
-        "b_bid_number": [
-            "GEM/2026/B/756592"
-        ],
-        "b_category_name": [
-            "Online UPS System, CABLE POWER ELECTRICAL"
-        ],
-        "b_is_bunch_id": [
-            "Ministry of Power"
+            "Pune Engineering Corps"
         ]
     }
 ]
